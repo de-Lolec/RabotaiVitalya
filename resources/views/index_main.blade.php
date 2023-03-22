@@ -12,16 +12,34 @@
                             <th class="text-center">#</th>
                             <th class="text-center">ФИО</th>
                             <th class="text-center">Должность</th>
-                            <th class="text-center">Выгорание</th>
+                            <th class="text-center">Состояние</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($paginator as $user)
                         <tr>
                             <td class="text-center">{{ $user->id }}</td>
-                            <td class="text-center" >{{ $user->name }}</td>
+                            <td class="text-center" >
+                                <a href="user/{{ $user->id }}" class="text-decoration-none text-success">
+                                {{ $user->name }}
+                                </a>
+                            </td>
                             <td class="text-center">{{ $user->position }}</td>
-                            <td class="text-center">{{ $user->local }}</td>
+                            @if($user->local>=70)
+                                <td class="text-center">  <a href="#" class="text-decoration-none text-danger">
+                                        {{ $user->local }}
+                                    </a></td>
+                            @elseif($user->local>=55 and $user->local<70)
+                                <td class="text-center">  <a href="#" class="text-decoration-none text-warning">
+                                        {{ $user->local }}
+                                    </a></td>
+                            @elseif($user->local<60)
+                                <td class="text-center">  <a href="#" class="text-decoration-none text-info">
+                                        {{ $user->local }}
+                                    </a></td>
+                            @endif
+
+
                         </tr>
                         @endforeach
                         </tbody>

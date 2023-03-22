@@ -24,8 +24,6 @@ class UserRepository extends CoreRepository
         return Model::class;
     }
     /**
-     * Получить список статей для вывода в списке
-     * (Админка)
      *
      * @return string[]
      */
@@ -41,8 +39,6 @@ class UserRepository extends CoreRepository
             'grade',
             'local'
         ];
-
-        //startConditions у нас создается экземпляр класса BlogPost
 
         $result = $this->startConditions()
             ->select($columns)

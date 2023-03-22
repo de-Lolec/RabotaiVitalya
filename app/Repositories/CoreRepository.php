@@ -10,9 +10,6 @@ use App\Models\User as Model;
  *
  * @package App\Repositories
  *
- * Репозиторий работы с сущностью.
- * Может выдавать наборы данных.
- * Не может создавать/изменять сущности.
  */
 
 abstract class CoreRepository
@@ -20,7 +17,6 @@ abstract class CoreRepository
     /**
      * @var Model
      */
-
 
     protected $model;
 

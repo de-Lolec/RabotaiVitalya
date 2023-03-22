@@ -21,12 +21,8 @@ class UserProfileController extends Controller
 
     public function __construct()
     {
-        //Общие свойства проинициализировали
         parent::__construct();
-        //Частные свойства проинициализируем
-        //Создание объекта blogPostRepository
-        //Ларавель сам его создает
-        //Не все обьекты надо так создавать
+
         $this->UserRepository = app(UserRepository::class);
     }
 
@@ -40,8 +36,15 @@ class UserProfileController extends Controller
         $list = new User();
 
         $user = $list->find($id);
+
+        $path = base_path('pandas\food.json');
+        $json = file_get_contents($path);
+        $city = json_decode($json, true); // декодируем строку json в ассоциативный массив
+        $id = $city["id"];
+        $food = $city["food"];
+
         return view('users.profile',
-            compact('user'));
+            compact('user', 'food'));
 
         //return view('Timetable')->with('item', $item);
     }

@@ -18,12 +18,8 @@ class ListController extends Controller
 
     public function __construct()
     {
-        //Общие свойства проинициализировали
         parent::__construct();
-        //Частные свойства проинициализируем
-        //Создание объекта blogPostRepository
-        //Ларавель сам его создает
-        //Не все обьекты надо так создавать
+
         $this->UserRepository = app(UserRepository::class);
     }
 
